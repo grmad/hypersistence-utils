@@ -46,7 +46,7 @@ public class PostgreSQLEnumType extends ImmutableDynamicParameterizedType<Enum> 
     @Override
     public void setParameterValues(Properties parameters) {
         enumType.setParameterValues(parameters);
-        jdbcType = new ObjectJdbcType(getSqlType());
+        jdbcType = new ObjectJdbcType(Types.OTHER);
         ReflectionUtils.setFieldValue(enumType, "jdbcType", jdbcType);
 
         JavaType javaType = new ObjectJavaType();
@@ -85,7 +85,7 @@ public class PostgreSQLEnumType extends ImmutableDynamicParameterizedType<Enum> 
 
     @Override
     public int getSqlType() {
-        return Types.OTHER;
+        return Types.VARCHAR;
     }
 
     @Override
